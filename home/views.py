@@ -23,9 +23,9 @@ def homepage(request):
                   f"сма: {machine}\n" \
                   f"неисправность: {malfunction}\n" \
                   f"телефон: {phone}\n" \
-                  f"алрес: {address}\n" \
+                  f"адрес: {address}\n" \
                   f"примечание: {note}"
-            bot.send_message(chat_id=959339948, text=msg)
+            bot.send_message(chat_id=-406255858, text=msg)
             form.save()
             return redirect('home')
     else:
