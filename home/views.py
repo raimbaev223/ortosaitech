@@ -4,8 +4,7 @@ from django.shortcuts import render, redirect
 from .forms import OrderForm
 from .models import HomepageBlock, MainContent
 
-token='1891341441:AAFnpC0ifzToTxYYwMueJJuvtmshQqJz4j4'
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot('1891341441:AAFnpC0ifzToTxYYwMueJJuvtmshQqJz4j4')
 
 
 def homepage(request):
