@@ -9,6 +9,7 @@ pillow = "*"
 pytelegrambotapi = "*"
 django-crispy-forms = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 
