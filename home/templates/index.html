@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <header class="masthead text-center text-white">
+            <div class="masthead-content">
+                <div class="container">
+                    <h1 class="masthead-heading mb-0">OrtoSaiTech</h1>
+                    <h2 class="masthead-subheading mb-0">{{ main.title }}</h2>
+                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#!">Контакты</a>
+                </div>
+            </div>
+            <div class="bg-circle-1 bg-circle"></div>
+            <div class="bg-circle-2 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-4 bg-circle"></div>
+        </header>
+{% for item in items %}
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid" src="media/{{ item.image }}" alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+<section class="container mb-4 mb-sm-5 mt-md-4 mt-lg-0 px-3 py-lg-6 py-5">
+<h2 class="h3 mb-5 pb-2 text-center">Наши контакты.</h2>
+<div class="row justify-content-center px-2 px-sm-0">
+  <div class="col-md-3 col-sm-4 col px-2 px-sm-3">
+    <h2 class="h6 pb-lg-3 pb-2 text-uppercase text-muted text-center">Звоните</h2>
+    <a class="d-block" style="color: #0b2e13" href="phoneto:+996555766333">
+        <span class="material-icons">phone</span><h5>0555 766 333</h5></a>
+    </a>
+    <a class="mt-sm-4 mt-3 d-block" style="color: #0b2e13" href="phoneto:+996500055522">
+        <span class="material-icons">phone</span><h5>0500 05 55 22</h5></a>
+    </a>
+  </div>
+  <div class="divider-vertical d-sm-block d-none offset-sm-1"></div>
+  <div class="col-md-3 col-sm-4 col offset-sm-1 px-2 px-sm-3">
+    <h2 class="h6 pb-lg-3 pb-2 text-uppercase text-muted text-center">Пишите</h2>
+    <a class="d-block" style="color: #0b2e13" href="https://wa.me/996555766333">
+        <span class="material-icons">chat_bubble</span>
+    <h5>whatsapp 1</h5></a>
+    <a class="mt-sm-4 mt-3 d-block" style="color: #0b2e13" href="https://wa.me/996500055522">
+        <span class="material-icons">question_answer</span>
+    <h5>whatsapp 2</h5></a>
+  </div>
+</div>
+</section>
+<h2 style="text-align: center">Отправить заявку</h2>
+<div class="container align-items-center">
+
+    <form action="." method="post" id="order-form">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <p><input type="submit" class="btn btn-success btn-xl rounded-pill mt-5 justify-content-center" style="width: 100%; margin-bottom: 40px" value="Отправить"></p>
+    </form>
+</div>
+{% endblock content %}
+
