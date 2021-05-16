@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class MainContent(models.Model):
     image = models.ImageField(upload_to="main_img/", verbose_name="Главное фото")
     title = models.CharField(max_length=255, verbose_name="Главный заголовок")
@@ -22,6 +21,7 @@ class Order(models.Model):
     summ = models.DecimalField(max_digits=5, decimal_places=0, verbose_name="Сумма за ремонт", null=True, blank=True)
     costs = models.DecimalField(max_digits=5, decimal_places=0, verbose_name="Расходы на ремонт", null=True, blank=True)
     check = models.BooleanField(default=False, verbose_name="Выполнено")
+    date = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):
         return f"{self.address} {self.phone} {self.machine}"

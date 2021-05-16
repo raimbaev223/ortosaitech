@@ -10,6 +10,7 @@ pytelegrambotapi = "*"
 django-crispy-forms = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-rest-framework = "*"
 
 [dev-packages]
 

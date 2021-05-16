@@ -1,8 +1,12 @@
 import telebot
 from django.shortcuts import render, redirect
+from django.db.models import Sum
+
 
 from .forms import OrderForm
-from .models import HomepageBlock, MainContent
+from .models import HomepageBlock, MainContent, Order
+
+
 
 bot = telebot.TeleBot('1891341441:AAFnpC0ifzToTxYYwMueJJuvtmshQqJz4j4')
 
@@ -31,3 +35,21 @@ def homepage(request):
     else:
         form = OrderForm()
         return render(request, 'index.html', {'items': items, 'form': form, 'main': main})
+
+
+def dashboard(request):
+    orders = Order.objects.all()
+    count = len(orders)
+    result_sum = Order.objects.aggregate(Sum('summ'))
+    result_costs = Order.objects.aggregate(Sum('costs'))
+    # result_total = result_sum - result_costs
+    return render(
+        request,
+        'dashboard.html',
+        {
+            'sum': result_sum,
+            'costs': result_costs,
+            # 'total': result_total,
+            'count': count,
+        }
+    )
